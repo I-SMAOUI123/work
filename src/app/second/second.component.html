@@ -122,8 +122,8 @@
   <div class="Details">
     <h2>Détails du tiers</h2>
     <div class="container">
-      <div class="column">
-        <div>
+      <div class="row">
+        <div class="column">
           <label for="categorie">Catégorie</label>
           <ng-select [items]="cities" [searchFn]="customSearchFn" bindLabel="name" [(ngModel)]="selectedCity" [searchable]="true">
             <ng-template ng-custom-search>
@@ -131,13 +131,21 @@
             </ng-template>
           </ng-select>
         </div>
-      </div>
-      <div class="column">
-        <div>
+        <div class="column">
           <label for="secteur">Secteur d'Activité</label>
           <ng-select [items]="cities" [searchFn]="customSearchFn" bindLabel="name" [(ngModel)]="selectedCity" [searchable]="true">
             <ng-template ng-custom-search>
               <input type="text" [(ngModel)]="selectedCity" placeholder="Select city" formControlName="secteurInput" class="custom-search-input">
+            </ng-template>
+          </ng-select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="provenance">Provenance</label>
+          <ng-select [items]="cities" [searchFn]="customSearchFn" bindLabel="name" [(ngModel)]="selectedCity" [searchable]="true">
+            <ng-template ng-custom-search>
+              <input type="text" [(ngModel)]="selectedCity" placeholder="Select city" formControlName="provenanceInput" class="custom-search-input">
             </ng-template>
           </ng-select>
         </div>
