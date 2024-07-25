@@ -1,0 +1,147 @@
+<div class="header">
+  <div class="left-icons">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+    <i class="fa fa-sync" aria-hidden="true"></i>
+  </div>
+  <div class="right-icon">
+    <i id="list-icon" class="fa-solid fa-list" (click)="navigateToFirst(false)"></i>
+    <i id="card-icon" class="fa-solid fa-grip" aria-hidden="false" (click)="navigateToFirst(true)"></i>
+    <i class="fa-regular fa-file"></i>
+  </div>
+</div>
+<div class="main-container">
+  <div class="left-container">
+    <div class="photo-upload-frame">
+      <div class="photo-upload-inner">
+        <input id="fileUpload" type="file" (change)="onFileChange($event)" style="display: none;" />
+        <div class="photo-controls">
+          <button type="button" (click)="triggerFileInput()">Upload</button>
+          <button type="button" (click)="removeImage()">Remove</button>
+        </div>
+        <div *ngIf="uploadedImage" class="photo-preview">
+          <img [src]="uploadedImage" alt="Imported Image" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-container">
+    <form [formGroup]="reactiveForm">
+      <div class="form-group1">
+        <label for="Type">Type tiers</label>
+        <select formControlName="Type" id="Type" (change)="onTypeChange($event)">
+          <option value="Individu">Individu</option>
+          <option value="Société">Société</option>
+        </select>
+      </div>
+      <div *ngIf="isIndividu">
+        <div class="form-inline">
+          <div class="form-group">
+            <select formControlName="civility" id="civility" class="select-placeholder">
+              <option value="" disabled [selected] hidden="!reactiveForm.get('civility').value">Civilité</option>
+              <option value="mr">M.</option>
+              <option value="Mme">Mme</option>
+              <option value="Dr">Dr</option>
+              <option value="Prof">Prof.</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input id="nomIndividu" formControlName="lastName" type="text" placeholder="Nom" />
+          </div>
+          <div class="form-group">
+            <input id="prenomIndividu" formControlName="firstName" type="text" placeholder="Prénom" />
+          </div>
+        </div>
+        <div class="checkbox-group">
+          <label><input type="checkbox" formControlName="prospect" /> Prospect</label>
+          <label><input type="checkbox" formControlName="employe" /> Employé</label>
+          <label><input type="checkbox" formControlName="client" /> Client</label>
+          <label><input type="checkbox" formControlName="fournisseur" /> Fournisseur</label>
+        </div>
+      </div>
+      <div *ngIf="isSociete">
+        <div class="form-group-NOM">
+          <label for="nomSociete">Nom</label>
+          <input id="nomSociete" formControlName="lastName" type="text" />
+        </div>
+        <div class="checkbox-group">
+          <label><input type="checkbox" formControlName="prospect" /> Prospect</label>
+          <label><input type="checkbox" formControlName="client" /> Client</label>
+          <label><input type="checkbox" formControlName="fournisseur" /> Fournisseur</label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<app-c-nav variant="tabs" class="nav-tabs">
+  <a routerLink="/info" routerLinkActive="active" class="nav-link">Information</a>
+</app-c-nav>
+<form [formGroup]="secondReactiveForm">
+  <div class="new-form-section">
+    <h3>Adresses postales</h3>
+    <p>Adresses</p>
+    <p>L'adresse suivante n'est pas valide, utilisez le bouton '+' pour en créer une nouvelle :</p>
+    <div class="form-group-adresse">
+      <input id="address" formControlName="address" type="text" placeholder="Adresse" />
+    </div>
+  </div>
+</form>
+<form [formGroup]="coordinates">
+  <div>
+    <h3>Coordonnées</h3>
+    <div class="container1">
+      <div class="row">
+        <div>
+          <label for="tel-fixe">Tél. fixe</label>
+          <input type="text" id="tel-fixe" formControlName="fixphone" placeholder="+33100000000">
+        </div>
+        <div>
+          <label for="fax">Fax</label>
+          <input type="text" id="fax" formControlName="fax" placeholder="+33000000000">
+        </div>
+        <div *ngIf="isIndividu">
+          <div>
+            <label for="mobile">N° Mobile</label>
+            <input type="text" id="mobile" formControlName="mobile" placeholder="+33100000000">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="email">Email</label>
+          <input type="text" id="email" formControlName="email" placeholder="whatever@example.com">
+        </div>
+        <div>
+          <label for="website">Site Web</label>
+          <input type="text" id="website" formControlName="website" placeholder="http://www.url.com">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<form [formGroup]="details">
+  <div class="Details">
+    <h2>Détails du tiers</h2>
+    <div class="container">
+      <div class="column">
+        <div>
+          <label for="categorie">Catégorie</label>
+          <ng-select [items]="cities" [searchFn]="customSearchFn" bindLabel="name" [(ngModel)]="selectedCity" [searchable]="true">
+            <ng-template ng-custom-search>
+              <input type="text" [(ngModel)]="selectedCity" placeholder="Select city" formControlName="categorieInput" class="custom-search-input">
+            </ng-template>
+          </ng-select>
+        </div>
+      </div>
+      <div class="column">
+        <div>
+          <label for="secteur">Secteur d'Activité</label>
+          <ng-select [items]="cities" [searchFn]="customSearchFn" bindLabel="name" [(ngModel)]="selectedCity" [searchable]="true">
+            <ng-template ng-custom-search>
+              <input type="text" [(ngModel)]="selectedCity" placeholder="Select city" formControlName="secteurInput" class="custom-search-input">
+            </ng-template>
+          </ng-select>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

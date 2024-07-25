@@ -1,0 +1,58 @@
+
+<div class="header">
+    <div class="left-icons">
+      <i class="fa fa-plus" aria-hidden="true" (click)="navigateToSecond()" ></i>
+      <!-- this is the icon -->
+        <i class="fa fa-sync" aria-hidden="true"></i>
+    </div>
+    <div class="right-icon">
+        <i id="list-icon" class="fa-solid fa-list" aria-hidden="true" (click)="toggleView('list')"></i>
+        <i id="card-icon" class="fa-solid fa-grip" (click)="toggleView('card')"></i>
+        <i class="fa-regular fa-file"></i>
+    </div>
+</div>
+<div class="container">
+  <div *ngIf="showCardView" class="container">
+    
+       <div class="card" *ngFor="let company of companies">
+            <div class="image-section">
+                <h2>{{ company.name }}</h2>
+                <img [src]="company.logo" alt="Company Logo">
+            </div>
+            <div class="info">
+                <p>Phone: {{ company.phone }}</p>
+                <p>Email: {{ company.email }}</p>
+                <p>PME: {{ company.PME }}</p>
+                <p>Sociétés : {{ company.Societes }}</p>
+                <p>Position fiscale: {{ company.Position_fiscale }}</p>
+            </div>
+        </div>
+      
+      </div>
+</div>
+    <div *ngIf="showListView" class="list-view">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>PME</th>
+                  <th>Sociétés</th>
+                  <th>Position Fiscale</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let company of companies">
+                  <td>{{ company.name }}</td>
+                  <td>{{ company.phone }}</td>
+                  <td>{{ company.email }}</td>
+                  <td>{{ company.PME }}</td>
+                  <td>{{ company.Societes }}</td>
+                  <td>{{ company.Position_fiscale }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+

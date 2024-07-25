@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
+  
+  .card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 20px 20px 20px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .image-section h2 {
+    margin-bottom: 10px; /* Adjust this value to add more space */
+    margin-top: 0; /* Ensure no top margin */
+  }
+  
+  .card img {
+    max-width: 50px;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+  .info p {
+    margin: 5px 0; /* Adjust this value to decrease space between email and phone */
+  }
+  .header {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #e7e7e7;
+    display: flex;
+    justify-content: space-between; /* Keeps left and right icons on opposite sides */
+    align-items: center;
+}
+
+.left-icons, .right-icon {
+    display: flex;
+    align-items: center;
+}
+
+.left-icons i, .right-icon i {
+    font-size: 20px; /* Adjust icon size */
+    color: #333; /* Icon color */
+    cursor: pointer; /* Makes the icon appear clickable */
+}
+
+.left-icons i {
+    margin-right: 10px; /* Space between the left icons */
+}
+
+.left-icons i:last-child {
+    margin-right: 0; /* No margin on the last left icon */
+}
+
+.right-icon i {
+    margin-right: 20px; /* Adds margin to the left of the right icon, moving it leftward */
+}
+
+
+  .list-view {
+    width: 100%;
+    overflow-x: auto; /* Allows scrolling if table is wider than screen */
+  }
+  
+  .list-view table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .list-view th, .list-view td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .list-view th {
+    background-color: #f4f4f4;
+  }
+  
+  .list-view tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .list-view tr:hover {
+    background-color: #f1f1f1;
+  }
+  /* In your CSS */
+.hide {
+  display: none;
+}
