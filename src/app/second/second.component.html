@@ -53,9 +53,9 @@
         </div>
         <div class="checkbox-group">
           <label><input type="checkbox" formControlName="prospect" /> Prospect</label>
-          <label><input type="checkbox" formControlName="employe" /> Employé</label>
-          <label><input type="checkbox" formControlName="client" /> Client</label>
-          <label><input type="checkbox" formControlName="fournisseur" /> Fournisseur</label>
+          <label><input type="checkbox" formControlName="employe" />Employé</label>
+          <label><input type="checkbox" formControlName="client" [(ngModel)]="showClient"/>Client</label>
+          <label><input type="checkbox" formControlName="fournisseur" [(ngModel)]="showFournisseur" />Fournisseur</label>
         </div>
       </div>
       <div *ngIf="isSociete">
@@ -65,16 +65,20 @@
         </div>
         <div class="checkbox-group">
           <label><input type="checkbox" formControlName="prospect" /> Prospect</label>
-          <label><input type="checkbox" formControlName="client" /> Client</label>
-          <label><input type="checkbox" formControlName="fournisseur" /> Fournisseur</label>
+          <label><input type="checkbox" formControlName="client" [(ngModel)]="showClient"/>Client</label>
+          <label><input type="checkbox" formControlName="fournisseur" [(ngModel)]="showFournisseur" />Fournisseur</label>
         </div>
       </div>
     </form>
   </div>
 </div>
 <app-c-nav variant="tabs" class="nav-tabs">
-  <a routerLink="/info" routerLinkActive="active" class="nav-link">Information</a>
+  <a routerLink="/info" routerLinkActive="active" class="nav-link" (click)="updateActiveTab('info')">Information</a>
+  <a *ngIf="showFournisseur" routerLink="/fournisseur" routerLinkActive="active" class="nav-link" (click)="updateActiveTab('fournisseur')">Fournisseur</a>
+  <a *ngIf="showClient" routerLink="/client" routerLinkActive="active" class="nav-link" (click)="updateActiveTab('client')">Client</a>
 </app-c-nav>
+<div [ngSwitch]="mode">
+<div *ngSwitchCase="'info'">
 <form [formGroup]="secondReactiveForm">
   <div class="new-form-section">
     <h3>Adresses postales</h3>
@@ -153,3 +157,11 @@
     </div>
   </div>
 </form>
+</div>
+<div *ngSwitchCase="'fournisseur'">
+  <h1>Say Hello !</h1>
+</div>
+<div *ngSwitchCase="'client'">
+  <h1>Say Hello Cient !</h1>
+</div>
+</div>

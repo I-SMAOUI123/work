@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,6 +15,9 @@ export class SecondComponent implements OnInit{
   details: FormGroup;
   isIndividu: boolean = false;
   isSociete: boolean = false;
+  showFournisseur: boolean = true;
+  showClient=false;
+  mode:string= 'info';
   uploadedImage: string | ArrayBuffer | null = null;
   constructor(private router: Router) {
     
@@ -46,6 +49,13 @@ export class SecondComponent implements OnInit{
     provenanceInput:new FormControl(null),
   
   })
+
+  }
+
+ 
+  
+  updateActiveTab(mode: string): void {
+    this.mode = mode;
   }
   onTypeChange(event: Event) {
     const value=(event.target as HTMLSelectElement).value;

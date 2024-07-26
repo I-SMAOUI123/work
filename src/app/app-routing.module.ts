@@ -6,7 +6,8 @@ import { SecondComponent } from './second/second.component';
 const routes: Routes = [
   { path: '', redirectTo: '/first', pathMatch: 'full' },
   { path: 'first', component: FirstComponent },
-  { path: 'second', component: SecondComponent }
+  { path: 'second', component: SecondComponent },
+
 ];
 
 @NgModule({
