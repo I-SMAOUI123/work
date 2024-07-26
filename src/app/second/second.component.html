@@ -80,8 +80,9 @@
 <div [ngSwitch]="mode">
 <div *ngSwitchCase="'info'">
 <form [formGroup]="secondReactiveForm">
+  <h3>Adresses postales</h3>
   <div class="new-form-section">
-    <h3>Adresses postales</h3>
+    
     <p>Adresses</p>
     <p>L'adresse suivante n'est pas valide, utilisez le bouton '+' pour en créer une nouvelle :</p>
     <div class="form-group-adresse">
@@ -126,7 +127,7 @@
   <div class="Details">
     <h2>Détails du tiers</h2>
     <div class="container">
-      <div class="row">
+      <div class="row1">
         <div class="column">
           <label for="categorie">Catégorie</label>
           <ng-select [items]="cities" [searchFn]="customSearchFn" bindLabel="name" [(ngModel)]="selectedCity" [searchable]="true">

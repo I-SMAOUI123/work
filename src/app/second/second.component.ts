@@ -115,6 +115,10 @@ export class SecondComponent implements OnInit{
     
     this.router.navigate(['/first'], { state: { isCardViewEnabled} });
   }
- 
+  activeTab: string = 'info';
+
+  selectTab(tab: string) {
+    this.activeTab = tab;
+  }
 }
 
