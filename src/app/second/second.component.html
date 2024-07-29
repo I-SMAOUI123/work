@@ -126,7 +126,7 @@
 </form>
 <form [formGroup]="details">
   <div class="Details">
-    <h2>Détails du tiers</h2>
+    <h3>Détails du tiers</h3>
     <div class="container">
       <div class="row1">
         <div class="column">
@@ -157,6 +157,15 @@
         </div>
       </div>
     </div>
+  </div>
+</form>
+<form [formGroup]= "parametres">
+  <div class="Parametres">
+    <h3>Paramètres</h3>
+    <label for="languageSelect">Langue</label>
+  <select id="languageSelect" [(ngModel)]="selectedLanguage" formControlName="langage">
+    <option *ngFor="let language of languages" [value]="language">{{ language }}</option>
+  </select>
   </div>
 </form>
 </div>

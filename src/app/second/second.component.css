@@ -379,9 +379,29 @@ form div input, form div select {
 .new-form-section{
   margin-left: 20px;
 }
-.form-group-adresse{
-    width: 500px;
- 
+.form-group-adresse {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    width:620px;
+}
+
+.form-group-adresse input {
+    flex: 1;
+    padding: 112px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    width: 2px;
+}
+
+.form-group-adresse i {
+    margin-left:10px;
+    cursor: pointer;
+    color: red;
+}
+
+.form-group-adresse i:hover {
+    color: darkred;
 }
 .nav-tabs {
   margin-top: 20px;
@@ -410,3 +430,31 @@ form div input, form div select {
 .nav-tab:hover {
   background-color: #e1e1e1;
 }
+.fa-trash:hover {
+    
+    color: darkred;
+}
+.fa-trash{
+    margin-left:530px ;
+   
+}
+.fa-plus {
+    display: block;
+    margin:1px auto;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.fa-plus:hover {
+    color: darkgreen;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  select {
+    width: 200px;
+    padding: 5px;
+    font-size: 16px;
+  }

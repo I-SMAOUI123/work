@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./second.component.css']
 })
 export class SecondComponent implements OnInit{
-
+  selectedLanguage: string = 'Français';
+  languages: string[] = ['Français', 'Anglais'];
   reactiveForm: FormGroup;
-  secondReactiveForm: FormGroup;
+  adr: FormGroup;
   coordinates: FormGroup;
+  parametres:FormGroup;
   details: FormGroup;
   isIndividu: boolean = false;
   isSociete: boolean = false;
@@ -19,9 +21,11 @@ export class SecondComponent implements OnInit{
   showClient=false;
   mode:string= 'info';
   uploadedImage: string | ArrayBuffer | null = null;
-  constructor(private router: Router) {
+  constructor(private router: Router, private fb: FormBuilder) {
     
   }
+ 
+
   ngOnInit(){
     this.reactiveForm= new FormGroup({
       Type:new FormControl(null),
@@ -33,9 +37,9 @@ export class SecondComponent implements OnInit{
       client:new FormControl(null),
       fournisseur:new FormControl(null),
   })
-  this.secondReactiveForm= new FormGroup({
-    address:new FormControl(null),
-  })
+  this.adr = this.fb.group({
+    addresses: this.fb.array([this.createAddress()])
+  });
   this.coordinates=new FormGroup({
     fixphone:new FormControl(null),
     fax:new FormControl(null),
@@ -49,11 +53,22 @@ export class SecondComponent implements OnInit{
     provenanceInput:new FormControl(null),
   
   })
-
+  this.parametres=new FormGroup({
+    langage:new FormControl('Français'),
+  })
   }
-
- 
-  
+  get addresses(): FormArray {
+    return this.adr.get('addresses') as FormArray;
+  }
+  createAddress(): FormControl {
+    return this.fb.control(null);
+  }
+  addAddress(): void {
+    this.addresses.push(this.createAddress());
+  }
+  removeAddress(index: number): void {
+    this.addresses.removeAt(index);
+  }
   updateActiveTab(mode: string): void {
     this.mode = mode;
   }
@@ -120,5 +135,6 @@ export class SecondComponent implements OnInit{
   selectTab(tab: string) {
     this.activeTab = tab;
   }
+
 }
 
