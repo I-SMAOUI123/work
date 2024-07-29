@@ -79,15 +79,16 @@
 </app-c-nav>
 <div [ngSwitch]="mode">
 <div *ngSwitchCase="'info'">
-<form [formGroup]="secondReactiveForm">
+<form [formGroup]="adr">
   <h3>Adresses postales</h3>
   <div class="new-form-section">
-    
     <p>Adresses</p>
     <p>L'adresse suivante n'est pas valide, utilisez le bouton '+' pour en créer une nouvelle :</p>
-    <div class="form-group-adresse">
-      <input id="address" formControlName="address" type="text" placeholder="Adresse" />
-    </div>
+    <div class="form-group-adresse" formArrayName="addresses" *ngFor="let address of addresses.controls; let i = index">
+            <input [formControlName]="i" id="address{{i}}" type="text" placeholder="Adresse" />
+            <i class="fa-solid fa-trash" *ngIf="i > 0" (click)="removeAddress(i)"></i>
+        </div>
+    <i  class="fa fa-plus" aria-hidden="true" (click)="addAddress()"></i>
   </div>
 </form>
 <form [formGroup]="coordinates">

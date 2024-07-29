@@ -15,7 +15,7 @@ export class SecondComponent implements OnInit{
   details: FormGroup;
   isIndividu: boolean = false;
   isSociete: boolean = false;
-  showFournisseur: boolean = true;
+  showFournisseur: boolean = false;
   showClient=false;
   mode:string= 'info';
   uploadedImage: string | ArrayBuffer | null = null;
